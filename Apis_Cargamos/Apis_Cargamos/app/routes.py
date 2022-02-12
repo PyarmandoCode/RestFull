@@ -1,7 +1,7 @@
 from flask import render_template,make_response,jsonify
 from app import app,db
 from app.models import Grupos
-from app.serializer import grupo_serializer
+from app.serializer import grupos_schema
 
 @app.route('/')
 def index():
@@ -18,7 +18,8 @@ def listar_grupos():
     #todo seleccionado todos los objetos de la clase grupos
     grupos=Grupos.query.all()
     #todo serializando y seleccionado los atributos a cast en json
-    result=grupo_serializer.dump(grupos)
+    #todo dump nos permite serializar los objetos de PYTHON 
+    result=grupos_schema.dump(grupos)
     
     #todo creando el documento de salida
     data={
