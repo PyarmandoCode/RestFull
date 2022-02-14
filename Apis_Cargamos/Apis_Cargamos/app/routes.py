@@ -1,4 +1,3 @@
-
 from flask import render_template,make_response,jsonify,request
 from app import app,db
 from app.models import Grupos
@@ -75,7 +74,28 @@ def add_grupo():
     return make_response(jsonify(data))
 
 
+@app.route("/delete_grupo/<int:id>",methods=["DELETE"])
+def delete_grupo(id):
+    #todo para seleccionar solo un objeto por id
+    grupo=Grupos.query.get(id)
+    if grupo:
+        
+        #todo elimino el objeto de la session y la tabla
+        db.session.delete(grupo)
+        db.session.commit()
+        
+        data= {
+            'message':'1',
+            'status':200,
+            }
+    else:
+        data = {
+            'message':'0',
+            'status':200,
+        }
+    return make_response(jsonify(data))
 
+    
 
     
     
