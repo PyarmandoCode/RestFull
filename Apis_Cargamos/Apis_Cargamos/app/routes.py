@@ -101,6 +101,10 @@ def edit_grupo(id):
     if grupo:
         nombre_grupo=request.json['nombre_grupo']
         estado=request.json['estado']
+        #todo pasalonde los valores a actualizar
+        grupo.nombre_grupo=nombre_grupo
+        grupo.estado=estado
+        
         db.session.commit()
         result=grupo_schema.dump(grupo)        
         data= {
