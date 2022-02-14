@@ -95,6 +95,30 @@ def delete_grupo(id):
         }
     return make_response(jsonify(data))
 
+@app.route("/edit_grupo/<int:id>",methods=["PUT"])
+def edit_grupo(id):
+    grupo=Grupos.query.get(id)
+    if grupo:
+        nombre_grupo=request.json['nombre_grupo']
+        estado=request.json['estado']
+        db.session.commit()
+        result=grupo_schema.dump(grupo)        
+        data= {
+            'message':'1',
+            'status':200,
+            'data':result
+                }
+    else:
+        data = {
+            'message':'0',
+            'status':200,
+        }   
+    return make_response(jsonify(data))
+    
+    
+    
+    
+
     
 
     
