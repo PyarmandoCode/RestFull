@@ -2,6 +2,7 @@ from flask import render_template,make_response,jsonify
 from app import app,db
 from app.models import Grupos
 from app.serializer import grupos_schema
+from flask import request
 
 @app.route('/')
 def index():
@@ -28,7 +29,10 @@ def listar_grupos():
         'data':result
     }
     return make_response(jsonify(data))
-    
+
+
+
+
     
     
     
