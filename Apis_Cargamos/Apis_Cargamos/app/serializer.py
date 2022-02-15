@@ -11,7 +11,7 @@ ma= Marshmallow(app)
 class GrupoSerializer(ma.SQLAlchemyAutoSchema):
     class Meta:
         model=Grupos
-        fields=('codgrupo','nombre_grupo','estado')
+        fields=('codgrupo','nombre_grupo','descripcion_grupo','estado')
         
 #todo lo utilizare cuando deseo mostrar solo un registro        
 grupo_schema=GrupoSerializer()
